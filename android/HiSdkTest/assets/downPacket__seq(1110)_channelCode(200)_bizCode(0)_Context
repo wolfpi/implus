@@ -1,0 +1,8 @@
+seq: 1110
+channelCode: 200
+uid: 72057594077928136
+bizPackage {
+  packetType: RESPONSE
+  bizCode: 0
+  bizData: ""
+}

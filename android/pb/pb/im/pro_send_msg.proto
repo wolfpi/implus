@@ -1,0 +1,16 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_one_msg.proto";
+import "pro_upload_success.proto";
+//option optimize_for = LITE_RUNTIME;
+//消息发送
+message SendMsgReq{
+    required OneMsg msg = 1;
+}
+
+message SendMsgRsp{
+    optional uint64 seq = 1;
+    optional uint64 serverTime = 2;
+    optional uint64 previousSeq = 3;
+}
+

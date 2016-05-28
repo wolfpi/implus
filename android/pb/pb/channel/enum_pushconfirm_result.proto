@@ -1,0 +1,10 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EPushConfirmResult
+{
+    CONFIRM_SUCCESS             = 0;
+    CONFIRM_PARAM_ERROR         = 10400;
+    CONFIRM_SERVER_ERROR        = 10401;
+    CONFIRM_HALF_SUCCESS        = 10402;
+};
+

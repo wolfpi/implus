@@ -1,0 +1,32 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+
+//10100 - 10109 client error
+//SESSION_PARAM_ERROR         = 10100;
+//SESSION_TOKEN_NOT_EXIST     = 10101;
+//SESSION_INVALID_APIKEY_SECRET_KEY 		= 10102;
+//SESSION_APP_NOT_EXIST 		= 10103; app didn't register
+//10110 - 10119 need heartbeat when this category of errors
+//SESSION_OFFLINE 		= 10110;
+//10120 - 10129 login status error, need relogin when this category of errors
+//SESSION_SESSION_NOT_EXIST   = 10120;
+//10130 - 10139 backend server error
+//SESSION_BACKEND_SEVER_NOT_ALLOW = 10130;
+//10190 - 10199 unknown server error
+//SESSION_SERVER_ERROR   = 10190;
+
+enum ESessionResult 
+{
+    SESSION_SUCCESS             			= 0;
+    SESSION_PARAM_ERROR         			= 10100;
+    SESSION_TOKEN_NOT_EXIST     			= 10101;
+	SESSION_INVALID_APIKEY_SECRET_KEY 		= 10102;
+	SESSION_APP_NOT_EXIST			 		= 10103;
+    SESSION_NO_APPINFO_STATUS               = 10104;
+    SESSION_APPINFO_OFFLINE                 = 10105;
+    SESSION_OFFLINE             			= 10110;
+    SESSION_SESSION_NOT_EXIST   			= 10120;
+	SESSION_BACKEND_SEVER_NOT_ALLOW 		= 10130;
+    SESSION_SERVER_ERROR        			= 10190;
+};
+

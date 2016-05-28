@@ -1,0 +1,15 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_platform_type.proto";
+import "enum_chat_type.proto";
+//option optimize_for = LITE_RUNTIME;
+message MsgPushResult{
+    required EChatType chatType = 1;//会话类型
+    optional string toId = 2;//接收方id
+    optional EPlatformType platformType = 3;
+    required uint64 seq = 4;
+    required bool submitSuccess = 5;
+    optional bool msgReceived = 6;
+    optional bool notifyReceived = 7;
+}
+

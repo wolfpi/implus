@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_split_part_info.proto";
+//option optimize_for = LITE_RUNTIME;
+//分片上传成功
+message SplitPartsUploadSuccessReq{
+    required string fileId = 1;
+    required string uploadId = 2;
+    repeated SplitPartInfo parts = 3;
+}
+
+message SplitPartsUploadSuccessRsp{
+}
+

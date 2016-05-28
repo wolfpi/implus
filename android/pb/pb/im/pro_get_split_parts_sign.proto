@@ -1,0 +1,17 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_split_part_info.proto";
+import "obj_split_part_sign.proto";
+//option optimize_for = LITE_RUNTIME;
+//分片签名批量获取
+message GetSplitPartsSignReq{
+    required string fileId = 1;
+    optional string bossHost = 2;
+    required string uploadId = 3;
+    repeated SplitPartInfo parts = 4;
+}
+
+message GetSplitPartsSignRsp{
+    repeated SplitPartSign partSigns = 1;
+}
+

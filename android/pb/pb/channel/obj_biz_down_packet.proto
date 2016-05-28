@@ -1,0 +1,11 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_packet_type.proto";
+message BizDownPackage
+{
+    required EPacketType    packetType          = 1;
+    optional uint32         bizCode             = 2; //业务系统返回的错误码
+    optional bytes          bizData             = 3; //业务数据包
+    optional uint32         chunkId             = 4[default = 0];//下行切片时候使用，chunk_id从0开始严格递增，相同seq的最后一个包chunk_id为-1，当不使用chunk模式时候此字段不要填
+};
+

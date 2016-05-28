@@ -1,0 +1,38 @@
+
+/////////////////bizCode///////////////////
+//DISP BIZ CODE:10000-10099
+//SESSION BIZ CODE:10100-10199
+//GATEWAY BIZ CODE:10200-10299
+//SCHEDULER BIZ CODE:10300-10399
+//RESEND BIZ CODE: 10400-10499
+//IOSPUSH BIZ CODE: 10500-10599 
+//CONFIG BIZ CODE:10600-10699
+//IM BIZ CODE:11000-19999
+//RESEND BIZ CODE: 10400-10499
+
+
+/////////////////channelCode///////////////////
+//200:success
+//400:auth error, relogin
+//401:resend
+//410-499:extend client error
+//500-599:im通道层错误
+//>=600 : im平台错误
+
+//option optimize_for = LITE_RUNTIME;
+//CoreAcc:RegChannel            注册通道
+//CoreSession:RegApp            注册应用
+//CoreSession:UnRegApp          取消注册应用
+//CoreSession:SetAppStatus      设置应用状态
+//CoreSession:AppLogin          应用登录
+//CoreSession:AppLogout          应用登出
+//CoreSession:Heartbeat         心跳
+//CoreSession:Login             登录
+//CoreSession:Logout            登出
+//CoreMsg:Push                  消息推送
+//CoreMsg:PushConfirm           消息确认 
+//CoreTag:Set                   设置tag,暂不实现
+//CoreTag:Delete                删除tag,暂不实现
+//CoreTag:Query                 查询tag,暂不实现
+//CoreConfig:UpdateConfig
+//CoreOffline:BindApnsToken

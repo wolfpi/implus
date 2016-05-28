@@ -1,0 +1,22 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_packet_type.proto";
+
+enum EConfirmMode{
+    ALWAYS_YES  = 1;//必须确认
+    ALWAYS_NO   = 2;//不需要确认
+};
+
+message PushOneMsg{
+    required uint64             msgId           = 1;//消息id
+    required EConfirmMode       confirmMode     = 2;//确认模式
+    optional bytes              onlineMsg       = 3;//推送的数据，对应的类型为PushData
+    optional bytes              offlineMsg      = 4;//离线提醒，对应类型为InformMessage
+    optional EPacketType        packetType      = 5;//包类型
+    optional uint64             ackId           = 6;
+};
+
+message PushMsgs{
+    repeated PushOneMsg msgs = 1; 
+};
+

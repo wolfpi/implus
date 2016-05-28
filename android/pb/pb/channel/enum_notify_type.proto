@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum ENotifyType
+{
+    LOGOUT_NOTIFY           = 1;//登出通知
+    CONFIG_CHANGED_NOTIFY   = 2;//配置改变
+    UPLOAD_LOG_NOTIFY       = 3;//上传日志通知
+};
+

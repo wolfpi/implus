@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_msg_push_result.proto";
+//option optimize_for = LITE_RUNTIME;
+message MsgRecvAckNotify{
+    repeated MsgPushResult msgPushResult = 1;
+}
+

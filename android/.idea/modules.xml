@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HiPluginLogCenter/HiPluginLogCenter.iml" filepath="$PROJECT_DIR$/HiPluginLogCenter/HiPluginLogCenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HiSdkDemo/HiSdkDemo.iml" filepath="$PROJECT_DIR$/HiSdkDemo/HiSdkDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HiSdkTest/HiSdkTest.iml" filepath="$PROJECT_DIR$/HiSdkTest/HiSdkTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HiSdk/IMSDK.iml" filepath="$PROJECT_DIR$/HiSdk/IMSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IMSDKDemo/IMSDKDemo.iml" filepath="$PROJECT_DIR$/IMSDKDemo/IMSDKDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IMSDKLibrary/IMSDKLibrary.iml" filepath="$PROJECT_DIR$/IMSDKLibrary/IMSDKLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IM_SDK.iml" filepath="$PROJECT_DIR$/IM_SDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IMPClient/imclient-api.iml" filepath="$PROJECT_DIR$/IMPClient/imclient-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PushClient/pushclient-api.iml" filepath="$PROJECT_DIR$/PushClient/pushclient-api.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,8 @@
+seq: 190
+channelCode: 200
+appId: 1
+bizPackage {
+  packetType: RESPONSE
+  bizCode: 0
+  bizData: "\n>\n\003log\022\030nuVOEZuUMHGolkJglGQUxg==\032\035{\"filelevel\":4,\"loglevel\":4}\n\n\f\n\006server\022\000\032\000\020\212\235\365\250\005"
+}

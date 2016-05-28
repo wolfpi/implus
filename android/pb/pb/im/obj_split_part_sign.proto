@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+message SplitPartSign{
+    required uint32 partNumber = 1;
+    optional string sign = 2;
+}
+

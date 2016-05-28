@@ -1,0 +1,19 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_image.proto";
+import "obj_voice.proto";
+import "obj_file.proto";
+import "obj_text.proto";
+import "obj_url.proto";
+import "obj_data.proto";
+//option optimize_for = LITE_RUNTIME;
+message MsgContent{
+    repeated Image images = 1;//图片
+    repeated Voice voices = 2;//语音
+    repeated File files = 3;//文件
+    repeated Text texts = 4;//文本
+    repeated URL urls = 5;//连接
+    repeated Data datas = 6;//连接
+    repeated bytes extContent = 7;//扩展内容
+}
+

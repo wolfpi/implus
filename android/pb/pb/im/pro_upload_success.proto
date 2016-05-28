@@ -1,0 +1,11 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+//上传成功上报
+message UploadSuccessReq{
+    repeated string fid = 1;
+}
+
+message UploadSuccessRsp{
+}
+

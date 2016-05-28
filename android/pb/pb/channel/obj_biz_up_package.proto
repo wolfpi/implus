@@ -1,0 +1,10 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_packet_type.proto";
+message BizUpPackage
+{
+    required EPacketType    packetType      = 1;
+    optional bytes          busiData        = 2; //业务数据包
+    optional uint32         chunkId         = 3[default = 0];
+};
+

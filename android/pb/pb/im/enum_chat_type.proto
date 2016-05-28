@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+enum EChatType{
+    CHAT_P2P = 1;//个人会话
+    CHAT_P2G = 2;//群组会话
+    CHAT_PA = 3;//服务号
+}
+

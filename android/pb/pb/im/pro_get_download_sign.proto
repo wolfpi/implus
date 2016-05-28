@@ -1,0 +1,25 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+//下载
+message GetDownloadSignReqItem{
+    required string fileId = 1;
+    optional string bossHost = 2;
+    required string md5 = 3;//为了安全性，客户端必须写上文件的MD5值
+}
+
+message GetDownloadSignRspItem{
+    required string fileId = 1;
+    required string sign = 2;
+    required string downloadUrl = 3;
+}
+
+//获取下载签名 
+message GetDownloadSignReq{
+    repeated GetDownloadSignReqItem reqList = 1;
+}
+
+message GetDownloadSignRsp{
+    repeated GetDownloadSignRspItem rspList = 1;
+}
+

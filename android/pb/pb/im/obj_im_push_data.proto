@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_im_push_type.proto";
+//option optimize_for = LITE_RUNTIME;
+message ImPushData{
+    required EImPushType imPushType = 1;
+    required bytes pushData = 2;
+}
+

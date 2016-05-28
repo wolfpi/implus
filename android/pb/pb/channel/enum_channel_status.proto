@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EChannelStatus
+{
+    CHANNEL_UNLINK = 1;
+    CHANNEL_NORMAL = 2;
+};
+

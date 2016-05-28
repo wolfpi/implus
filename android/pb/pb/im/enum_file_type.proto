@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+enum EFileType{
+    FILE_IMAGE = 1;
+    FILE_VOICE = 2;
+    FILE_CUSTOM = 3;
+}
+

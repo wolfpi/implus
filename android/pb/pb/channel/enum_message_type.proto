@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EMessageType
+{
+    NORMAL_MSG = 1;//普通消息
+    SYS_NOTIFY_MSG = 2;//系统消息
+};
+

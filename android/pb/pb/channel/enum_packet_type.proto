@@ -1,0 +1,10 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EPacketType
+{
+    REQUEST         = 1;
+    RESPONSE        = 2;
+    NOTIFYCATION    = 3;
+    CUSTOM          = 4;
+};
+

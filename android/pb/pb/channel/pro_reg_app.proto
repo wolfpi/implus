@@ -1,0 +1,24 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_device_info.proto";
+import "obj_device_type_info.proto";
+//register app request
+//应用启动时，尝试通过通道连接服务器，通道检查是否存在应用绑定信息，如果不存在要求app先发起这个请求注册
+//通道根据这个请求的响应，来绑定对应的app；只有绑定的app才能发起后续的SetAppStatusReq请求
+//如果之前已经绑定过，只设置新的应用状态
+message RegAppReq
+{
+    required string     apiKey      = 1;
+	required string		channelKey  = 2;
+    required DeviceInfo deviceInfo  = 3;
+    required string     sign 	    = 4; //md5(secretkey)
+    required DeviceTypeInfo deviceTypeInfo = 5;
+};
+
+//register app response
+message RegAppRsp
+{
+    optional uint32         deviceTypeId        = 1;//唯一设备类型id
+	required string         deviceId            = 2;//生成的pushid，业务可以拿到通过这个来对手机进行推送
+};
+

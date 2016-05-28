@@ -1,0 +1,20 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_file_type.proto";
+//option optimize_for = LITE_RUNTIME;
+//分片上传
+//分片上传初始化
+message InitSplitUploadReq{
+    required string fileName = 1;
+    required uint32 fileSize = 2;
+    required string md5 = 3;
+    required EFileType   fileType = 4;
+}
+
+message InitSplitUploadRsp{
+    required string fileId = 1;
+    required string uploadUrl = 2;
+    required string uploadId = 3;
+    required bool exist = 4;
+}
+

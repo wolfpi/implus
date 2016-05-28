@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_chat_type.proto";
+//option optimize_for = LITE_RUNTIME;
+//同步最近活跃的会话 
+message ChatConversation{
+    required EChatType  chatType = 1;
+    required string chatId = 2;
+    required uint64 lastRecvMsgSeq = 3;
+    required uint64 lastRecvMsgTime = 4;
+    required uint64 lastReadMsgSeq = 5;
+    required uint64 lastReadMsgTime = 6;
+}
+

@@ -1,0 +1,26 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_msg_content.proto";
+import "enum_chat_type.proto";
+import "enum_msg_template.proto";
+//option optimize_for = LITE_RUNTIME;
+message OneMsg{
+    optional EChatType chatType = 1;//会话类型
+    optional string fromId = 2;//发送方accountId
+    optional string fromName = 3;
+    optional string toId = 4;//接收方id
+    optional uint64 seq = 5;//消息序号，服务端生成
+    required MsgContent content = 6;//消息内容
+    required string view = 7;//展现ui的规则定义，由客户端sdk定义
+    optional uint64 serverTime = 8;//服务器时间
+    required uint64 sendTime = 9;//客户端发送的时间，unix时间戳
+    required bool isRealTime = 10;//是否为实时消息
+    repeated string options = 11;//自定义选项
+    optional string msgTemplate = 12;//消息模板,这个字段决定如何解析具体内容
+    optional uint64 clientMsgID = 13;//客户端生成的消息ID，客户端和服务器都需要根据这个字段排重，这个字段目前的取值方式：44位的时间戳 + 20位的序号
+    optional string notifyText = 14;//离线通知的文本
+    optional string compatibleText = 15;//兼容性 文本，客户端无法识别消息格式时，用这个文本提示客户
+    optional uint64 previousSeq = 16;//上一条消息的ID，客户端可以用来判断消息连续性。如果为0表示服务器无法判断
+    optional string extra = 17;//扩展信息
+}
+

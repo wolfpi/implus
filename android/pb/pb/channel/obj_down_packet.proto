@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_biz_down_packet.proto";
+//下行包
+message DownPacket
+{   
+    optional string         sessionId           = 1;
+    required uint32         seq                 = 2; //业务包的序列号，用于安全使用，rsp中会返回
+    required int32          channelCode         = 3; //通道返回的错误码 EChannelErrorCode
+    optional uint64         uid                 = 4;
+    optional uint32         appId               = 5;
+    optional BizDownPackage bizPackage          = 6;
+};
+

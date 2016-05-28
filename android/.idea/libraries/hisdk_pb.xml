@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hisdk_pb">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HiSdk/libs/hisdk_pb.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

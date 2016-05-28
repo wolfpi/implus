@@ -1,0 +1,46 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME; 
+enum EMsgErrorCode{
+	// 参数不合法
+    MSG_SERVICE_ERROR_INVALID_PARAMS = 11001;
+    // 消息保存失败
+    MSG_SERVICE_ERROR_SAVE_MSG_FAILED = 11002;
+    // 服务器错误
+    MSG_SERVICE_ERROR_SERVER_FAILED = 11003;
+    // 发送方填写错误
+    MSG_SERVICE_ERROR_INVALID_FROM = 11004;
+    // 发送方或接收方不满足ID命名规则
+    MSG_SERVICE_ERROR_INVALID_ID = 11005;
+    // 消息超过大小
+    MSG_SERVICE_ERROR_MSG_TOO_LARGE = 11006;
+    // 群和服务号不允许发实时消息
+    MSG_SERVICE_ERROR_REAL_TIME_NOT_ALLOWED = 11007;
+    // 对方被自己阻止
+    MSG_SERVICE_ERROR_TARGET_USER_BLOCKED = 11008;
+    // 自己被对方阻止
+    MSG_SERVICE_ERROR_FROM_USER_BLOCKED = 11009;
+    // 接收方未注册
+    MSG_SERVICE_ERROR_TARGET_NOT_EXIST = 11010;
+    // 发送方不是合法的群成员 
+    MSG_SERVICE_ERROR_NOT_IN_GROUP = 11011;
+    
+    // 同步消息协议，参数里设置的同步条数太多
+    MSG_SERVIER_ERROR_QUERY_MSGS_NUM_EXCEED_LIMIT = 11100;
+    // 同步消息协议，chatID参数不合法
+    MSG_SERVIER_ERROR_QUERY_MSGS_INVALID_CHAT_ID = 11101;
+    
+    // 已读上报协议，会话不合法
+    MSG_SERVICE_ERROR_READ_ACK_INVALID_CONVERSATION = 11201;
+    // 已读上报协议，chatID格式错误
+    MSG_SERVICE_ERROR_READ_ACK_INVALID_CHAT_ID = 11202;
+    
+    // 查询最新会话协议，会话个数超过限制
+    MSG_SERVICE_ERROR_QUERY_CONTACTS_NUM_EXCEED_LIMIT = 11301;
+}
+
+enum EFileErrorCode{
+    FILE_SERVICE_ERROR_INVALID_PARAMS = 11101;
+    FILE_SERVICE_ERROR_SERVER_FAILED = 11102;
+}
+

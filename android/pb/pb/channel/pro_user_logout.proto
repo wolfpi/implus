@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//Logout Request
+message LogoutReq
+{
+    repeated bytes  extra    = 1; // extention
+};
+
+//Logout response
+message LogoutResp
+{
+    repeated bytes  extra   = 1; // extention
+};
+

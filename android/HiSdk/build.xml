@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HiSdk" basedir="." default="archiveJar">
+
+    <!-- 指定 javac 使用 1.6 -->
+    <property name="ant.build.javac.source" value="1.6"/>
+    <property name="ant.build.javac.target" value="1.6"/>
+
+    <!-- compilation options -->
+    <property name="java.encoding" value="UTF-8" />
+    <!-- Verbosity -->
+    <property name="verbose" value="false" />
+    <property name="proguard.enabled.flag" value="true"/>
+    
+    <!-- local env -->
+	<property file="local.properties" />
+	<property file="ant.properties" />
+	<property environment="env" />
+    
+    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
+        <isset property="env.ANDROID_HOME" />
+    </condition>
+    
+    <loadproperties srcFile="project.properties" />
+    
+    <fail
+            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
+            unless="sdk.dir"
+    />
+    
+    <import file="custom_rules.xml" optional="true" />
+    
+    <!-- version-tag: custom -->
+    <import file="${sdk.dir}/tools/ant/build.xml" />
+    
+	
+	<property name="output.dir" value="output" />
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="docs.dir" value="doc" />
+	<property name="report.dir" value="report" />
+	
+	<tstamp>
+       <format property="buildTime" pattern="yyyyMMddHHmm" />
+   	</tstamp>
+	
+    <!-- dependency libs -->
+    <path id="classpath">  
+        <fileset  dir="libs">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${sdk.dir}/platforms/${target}">
+          <include name="android.jar"/>
+        </fileset>
+    </path>
+    
+    <target name="-clean">
+        <echo message="buildTime:${buildTime}"/>
+        <delete dir="${build.dir}" />
+        <delete dir="${output.dir}" />
+        <delete dir="${report.dir}" />
+        <delete dir="${docs.dir}" />
+    </target>
+
+    <!--指定使用 java 1.6 编译-->
+    <target name="compile" depends="-clean">
+        <mkdir dir="${build.dir}/classes" />
+        <javac encoding="${java.encoding}"
+               includeantruntime="false"
+               verbose="${verbose}"
+               destdir="${build.dir}/classes"
+               srcdir="${src.dir}" 
+         	   excludes="**/com/baidu/im/sdkdemo/**"
+               >
+             <classpath refid="classpath"/> 
+         </javac>
+    </target>
+
+    <!-- findbugs -->
+    <target name="findbugs">
+	    <echo level="info" message="findbugs.home=${findbugs.home}"/>
+        <mkdir dir="${report.dir}"/>
+        <taskdef classname="edu.umd.cs.findbugs.anttask.FindBugsTask" classpath="${findbugs.home}/lib/findbugs.jar" name="findbugs"/>
+        <!-- <findbugs excludefilter="findbugs_exclude.xml" home="${findbugs.home}" jvmargs="-Xmx1000m" output="html" outputFile="${report.dir}/findbugs_report.html">  -->
+        <findbugs home="${findbugs.home}" output="xml:withMessages" outputFile="${report.dir}/findbugs_errors.xml">
+            <sourcePath path="${src.dir}"/>
+            <class location="${build.dir}/classes"/>
+        </findbugs>
+    </target>
+    
+    <target name="jar" depends="compile">
+        <if condition="${proguard.enabled.flag}">
+            <then>
+                <echo level="info">Proguard.config is enabled</echo>
+                <property name="obfuscate.absolute.dir" location="${build.dir}/proguard" />
+                <property name="preobfuscate.jar.file" value="${build.dir}/imsdk_temp.jar" />
+                <property name="obfuscated.jar.file" value="${build.dir}/imsdk.jar" />
+                <pathconvert property="project.target.classpath.value" refid="classpath">
+                    <firstmatchmapper>
+                        <regexpmapper from='^([^ ]*)( .*)$$' to='"\1\2"'/>
+                        <identitymapper/>
+                    </firstmatchmapper>
+                </pathconvert>
+                <echo level="info">Classpath:${project.target.classpath.value}</echo>
+
+                <!-- Add Proguard Tasks -->
+                <property name="proguard.jar" location="${android.tools.dir}/proguard/lib/proguard.jar" />
+                <taskdef name="proguard" classname="proguard.ant.ProGuardTask" classpath="${proguard.jar}" />
+
+                <mkdir dir="${obfuscate.absolute.dir}" />
+                <delete file="${preobfuscate.jar.file}"/>
+                <delete file="${obfuscated.jar.file}"/>
+                <jar basedir="${build.dir}/classes" destfile="${build.dir}/imsdk_temp.jar">
+            		<manifest>
+                		<attribute name="build-version" value="${buildTime}" />
+            		</manifest>
+        		</jar>
+                <proguard>
+                    -include      "proguard-project.txt"
+                    -injars       ${preobfuscate.jar.file}
+                    -outjars      "${obfuscated.jar.file}"
+                    -libraryjars  ${project.target.classpath.value}
+                    -dump         "${obfuscate.absolute.dir}/dump.txt"
+                    -printseeds   "${obfuscate.absolute.dir}/seeds.txt"
+                    -printusage   "${obfuscate.absolute.dir}/usage.txt"
+                    -printmapping "${obfuscate.absolute.dir}/mapping.txt"
+                </proguard>
+            </then>
+        </if>
+    </target>
+    
+    <!-- archiveJarToOutput -->
+    <target description="archive jar To Output" name="archiveJar" depends="jar">
+        <echo message="----------- archiveToOutput start ------------"/>
+        <mkdir dir="${output.dir}"/>
+        <copy todir="${output.dir}">
+            <fileset dir="${build.dir}">
+                <include name="*.jar"/>
+                <exclude name="*temp.jar" />
+            </fileset>
+        </copy>
+        <copydir dest="${output.dir}/libs" src="libs"/>
+        <copydir dest="${output.dir}/proguard" src="${build.dir}/proguard"/>
+        <checksum file="${output.dir}/imsdk.jar"/>
+        <!-- 创建zip -->
+        <zip basedir="${output.dir}" zipfile="${output.dir}/imsdk_release.zip"/>
+        <echo message="delete jar.."/>
+        <delete dir="${output.dir}/libs" />
+        <delete dir="${output.dir}/proguard" />
+        <delete file="${output.dir}/imsdk.jar" />
+        <delete file="${output.dir}/imsdk.jar.MD5" />
+        <echo message="----------- archiveToOutput End ------------"/>
+    </target>
+    
+     <!-- javadoc -->
+     <target name="javadoc">
+          <mkdir dir="${docs.dir}/javadoc" />
+          <javadoc encoding="utf-8" charset="utf-8" sourcepath="${src.dir}" destdir="${docs.dir}/javadoc">
+               <classpath refid="classpath"/>
+          </javadoc>
+          <echo message="...........Javadoc command complete...."/>
+     </target>
+     
+    <!-- archiveDebugApkToOutput -->
+    <target description="archive DebugApk To Output" name="archiveDebugApkToOutput">
+        <echo message="----------- archiveToOutput start ------------"/>
+        <mkdir dir="${output.dir}"/>
+        <copy todir="${output.dir}">
+            <fileset dir="${out.absolute.dir}">
+                <include name="*debug.apk"/>
+            </fileset>
+        </copy>
+        <move file="${output.dir}/IMSdk-debug.apk" tofile="${output.dir}/HiSdk-debug-${buildTime}.apk"/>
+        <checksum file="${output.dir}/IMSdk-debug-${buildTime}.apk"/>
+        <echo message="----------- archiveToOutput End ------------"/>
+    </target>
+
+</project>

@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+message ConfigGroup
+{
+    required string groupName   = 1; //配置分组名
+    required string md5     	= 2; //配置的版本号，客户端依次判断是否需要同步
+    optional string configJson  = 3; //配置的内容，使用json格式
+};
+

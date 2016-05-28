@@ -1,0 +1,10 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_kv.proto";
+//普通消息，可以传任何内容
+message NormalMessage{
+    optional uint32     contentType     = 1;
+    required bytes      content         = 2;
+    repeated KV         customContents  = 3;
+};
+

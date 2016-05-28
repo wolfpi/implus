@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_config_group.proto";
+//Notify client some config have changed
+message ConfigChangedNotify
+{
+    required uint64 timestamp  = 1; //配置文件最新修改日期
+};
+

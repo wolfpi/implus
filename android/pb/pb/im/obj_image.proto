@@ -1,0 +1,13 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME; 
+message Image{
+    optional string imageId = 1;//图片的id，客户端设置
+    required string md5 = 2;//图片的md5，发起方计算得到
+    required uint32 size = 3;//图片的大小，单位为byte
+    required uint32 width = 4;//图片宽度，单位mm
+    required uint32 height = 5;//图片高度，单位mm 
+    optional string url = 6;//图片url。如果是平台管理的，格式为implus://{文件id_md5}。否则url由应用自己规定
+    optional string extInfo = 7;//附加信息
+}
+

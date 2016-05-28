@@ -1,0 +1,18 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_biz_up_package.proto";
+import "obj_bua.proto";
+//上行包
+message UpPacket
+{
+    optional string         sessionId           = 1;    
+    required string         serviceName         = 2; //调用的服务
+    required string         methodName          = 3; //调用的方法
+    required uint32         seq                 = 4; //业务包的序列号，用于安全使用，rsp中会返回
+    optional uint64         uid                 = 5;
+    optional uint32         appId               = 6;
+	optional BUA            bua             	= 7;  //bua字段
+	required bool           sysPackage          = 8; //是否是通道内部消息，true表示是，dispatch分发时候需要区分开	
+    required BizUpPackage   bizPackage          = 9;
+};
+

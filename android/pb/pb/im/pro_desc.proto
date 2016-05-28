@@ -1,0 +1,79 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//*********************协议说明：与通道协议关系******************************//
+//IM层的协议都通过通道层的协议封装，对应的通道层协议为：PushOneMsg->onlineMsg(PushData)->normalMessage->content
+//PushOneMsg->onlineMsg(PushData)->normalMessage->contentType为0表示通道层的推送，为1表示是IM层的协议
+//PushOneMsg->onlineMsg(PushData)->normalMessage->content 对应IM层的协议是ImPushData
+
+
+//*********************协议说明：ImPushData结构******************************//
+//通过imPushType来标识支持的消息类型，目前支持三种定义：
+//enum EImPushType{
+//    IM_PUSH_CHAT_MSG = 1;//普通消息
+//    IM_PUSH_CHAT_MSG_RECV_ACK = 2;//消息接收确认
+//    IM_PUSH_CHAT_MSG_READ_ACK = 3;//消息到达确认
+//}
+//目前版本只实现了前面两种类型的消息。其中第二种只针对实时消息设计
+//imPushType=IM_PUSH_CHAT_MSG时，pushData对应的类型为OneMsg
+//imPushType=IM_PUSH_CHAT_MSG_RECV_ACK时，pushData对应的类型为MsgRecvAckNotify
+
+
+
+//*********************协议说明：错误码******************************//
+//发送消息的错误码：EMsgErrorCode
+//发送文件的错误码：EFileErrorCode
+
+
+//*********************协议说明：消息格式******************************//
+//OneMsg类型完整定义了一条消息，其中seq、serverTime和perviousSeq由服务器负责生成
+//isRealTime表示是否为实时消息，只有P2P类型的消息可以设置为true
+//clientMsgID表示客户端生成的消息id，用来消息的排重、
+//msgTemplate用来描述消息结构信息，由客户端负责定义
+//content为消息中包含的各种具体的消息内容，可以定义文本、图片、语音、文件、url等
+//chatType,fromId,toId表示一条消息的会话类型、发送方和接收方；chatType支持个人消息、群组消息和服务号消息
+
+
+//*********************协议说明：发送消息******************************//
+// 请求：SendMsgReq，一次只能发送一条消息
+// 响应：SendMsgRsp，服务器返回消息的seq、serverTime和perviousSeq；收到响应客户端应该更新本地的消息存储
+// 限制：当前协议，发送方多端情况下无法收到自己发送的消息
+// 限制：当前协议，还无法实现自己多端之间的消息传递
+
+//*********************协议说明：同步消息******************************//
+// 请求：QueryMsgsReq，可以指定需要查询消息的 范围信息和总条数限制；每个范围可以指定count、startSeq和endSeq；
+// 响应：QueryMsgsRsp，返回消息查询的结构
+// 约定：参数设置不能超过约定的限制，请求条数设置超限时，服务器将范围参数错误；count/startSeq/endSeq必须至少设置一项
+// 约定：服务器总是返回满足条件的最新消息
+
+//*********************协议说明：同步会话******************************//
+// 请求：QueryActiveContactsReq：可以指定lastQueryTime,needReturnMsgsContactsNum和needReturnMsgsNum
+//       lastQueryTime总是对应上次成功同步会话时服务器返回的queryTime
+//       needReturnMsgsContactsNum表示需要返回最近消息的会话条数，用来实现首屏刷新
+//       needReturnMsgsNum表示每个会话需要返回的消息条数，目前只能为1
+//
+// 响应：QueryActiveContactsRsp，返回会话列表和消息信息，会话列表是有序的，但消息没有顺序，客户端需要把消息放到对应的会话中
+
+
+//*********************协议说明：已读上报******************************//
+// 请求：ReadAckReq, 最新的已读会话信息；可以同时上报多个会话；每个会话的最后一条消息id和实际、最后已读消息的id和实际都需要正确填写
+// 响应：ReadAckRsp
+// 注意事项：客户端需要根据api的设置在合适的时机上报已读
+
+//*********************协议说明：文件上传******************************//
+// 过程：获取签名 -> 根据返回的url和签名信息把文件上传到bos -> 上报上传成功
+// 获取签名：
+//     请求：GetUploadSignReq，允许客户端批量请求签名，必须正确设置需要的参数
+//     响应：GetUploadSignRsp，签名结果；有三种情况，分别是签名失败、已经存在、正确返回签名信息；对于已经存在的情况，客户端直接认为成功即可
+// 上传：根据boss的协议上传
+// 上报结果：只需要针对成功的情况上报，失败时，应该通过客户端统计的方式上报
+//     请求：UploadSuccessReq，设置上传成功的文件id
+//     响应：UploadSuccessRsp
+
+//*********************协议说明：文件下载******************************//
+// 过程：获取签名 -> 通过boss下载
+// 获取签名：
+//     请求：GetDownloadSignReq，设置需要下载的文件fid，md5和bosshost；MD5必须填写，服务器将验证fid和md5是否匹配
+//     响应：GetDownloadSignRsp，返回对应的下载url和签名
+// 下载：根据boss的协议完成
+
+

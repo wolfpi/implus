@@ -1,0 +1,22 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_kv.proto";
+
+//Login Request
+message LoginReq
+{
+    required string     channelKey  = 1;
+    optional string     loginName   = 2; //login name
+    optional string     password    = 3; //token or password
+    optional string     token       = 4; //token or password
+    repeated KV         args        = 5; //additional key-value string
+    optional bytes      extra       = 6; //extention
+};
+
+//Login response
+message LoginResp
+{
+    optional bytes  extra   = 1; // extention
+};
+
+

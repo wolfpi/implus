@@ -1,0 +1,30 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_file_type.proto";
+//option optimize_for = LITE_RUNTIME;
+//上传文件
+message GetUploadSignReqItem{
+    required string fileName = 1;
+    required uint32 fileSize = 2;
+    required string md5 = 3;
+    required string bmd5 = 4;
+    optional string bossHost = 5;
+    required EFileType   fileType = 6;
+}
+
+message GetUploadSignRspItem{
+    required string fid = 1;
+    required string sign = 2;
+    required string uploadUrl = 3;
+    required bool exist = 4;
+}
+
+//获取上传文件签名
+message GetUploadSignReq{
+    repeated GetUploadSignReqItem reqList = 1;
+}
+
+message GetUploadSignRsp{
+    repeated GetUploadSignRspItem rspList = 1;
+}
+

@@ -1,0 +1,12 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum ENetworkType
+{   
+    APN_WWW     = 1;   //有线网络，PC端使用
+    APN_WIFI    = 2;   //WIFI网络
+    APN_2G      = 3;   //2G网络
+    APN_3G      = 4;   //3G网络
+	APN_4G      = 5;   //4G网络
+	APN_UNKNOWN = 6;   //未知移动网络类型
+};
+

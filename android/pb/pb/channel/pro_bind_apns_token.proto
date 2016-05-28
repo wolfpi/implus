@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+// 绑定 ios端 与证书关系
+message BindApnsTokenReq
+{
+    optional string deviceToken = 1;
+    required string apnsToken   = 2;
+};
+
+message BindApnsTokenResp
+{
+
+};
+

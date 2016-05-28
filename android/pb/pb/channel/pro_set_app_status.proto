@@ -1,0 +1,19 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_app_status.proto";
+
+//set app status request
+//设置应用状态时，如果返回需要注册的应用不为空，需要通过RegAppReq来注册初始状态
+message SetAppStatusReq
+{
+    repeated uint32     appIds = 1;
+    required EAppStatus status = 2;
+    required string     channelKey = 3; 
+};
+
+//set app status  response
+message SetAppStatusRsp
+{
+    repeated uint32 needRegAppIds = 1;//需要进行注册确认的应用列表
+};
+

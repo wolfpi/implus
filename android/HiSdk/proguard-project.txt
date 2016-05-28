@@ -1,0 +1,92 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+#-optimizationpasses 5
+
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-dontoptimize
+-verbose
+-useuniqueclassmembernames
+-ignorewarnings
+
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.app.IntentService
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+
+-keep class android.support.**
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keep class * implements android.os.Parcelable {
+  public static final android.os.Parcelable$Creator *;
+}
+
+-dontwarn com.baidu.**
+-keep class com.baidu.im.sdk.** { *; }
+-keep class com.baidu.im.dlinterface.** { *; }
+-keep class com.baidu.im.frame.pb.** { *; }
+-keep class com.google.** { *; }
+-keep class android.** { *; }
+-keep class com.baidu.im.outapp.network.hichannel.** { *; }
+-keep class com.baidu.im.frame.inapp.PushReceiver { *; }
+-keep class com.baidu.im.frame.outapp.ImBroadcastReceiver { *; }
+-keep class com.baidu.im.frame.utils.HexUtil { *; }
+
+-keep class com.baidu.imc.IMPChannelSDK { *; }
+-keep class com.baidu.imc.IMPlusSDK { *; }
+-keep class com.baidu.imc.impl.im.message.** { *; }
+#-keep class com.baidu.imc.impl.im.protocol.file.** { *; }
+
+-keepattributes Signature,Deprecated,*Annotation*,EnclosingMethod
+
+# keep sourcefile, linenumber for exception debug
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
+
+-libraryjars libs/android-support-v4.jar
+-libraryjars libs/hipluginlogcenter.jar
+-libraryjars libs/hisdk_pb.jar
+-libraryjars libs/imclient-api-1.0.jar
+-libraryjars libs/protobuf-java-2.6.1_lite.jar
+-libraryjars libs/pushclient-api-1.0.jar

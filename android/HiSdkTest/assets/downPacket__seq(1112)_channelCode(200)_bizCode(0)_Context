@@ -1,0 +1,11 @@
+sessionId: "5224A17D-6ADB-47B9-92F6-C425D5378FF3B1B850341EFBB29480EC62A2C20DE499"
+seq: 1112
+channelCode: 200
+uid: 72057594077928136
+appId: 1
+bizPackage {
+  packetType: RESPONSE
+  bizCode: 0
+  bizData: "msg 1.3 A 1\r\nto:40000200\r\nmsgKey:1428486329004\r\nmethod:msg_request\r\nfrom:40000200\r\n\r\n<msg>ut</msg>"
+  chunkId: 0
+}

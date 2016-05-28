@@ -1,0 +1,32 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+
+//通道建立后，第一个包必须为这个请求，这个请求处理后才会建立accChannelId->channelId的映射，后续的包才能正确转发
+//adapter收到这个请求时，判断channelKey是否合法并存在对应的channelId和deviceId信息,不合法需要新生成channelKey和channelId,并下发channelKey
+//channelKey可以为md5(accChannelId+timestamp)，由客户端负责保管，在下次连接时带上；可以通过md5(accChannelId+timestamp)->channelId的映射关系来保持channelId不变，实现安卓端的离线推送
+//对于ios来说，deviceToken由客户端提供；对于其他系统来说，deviceToken等同于channelId
+//如果服务端返回了relocateIP信息，客户端需要根据返回的IP进行重连
+enum ERelocateType
+{
+    RELOCATE_NULL   = 0;     //没有重定向
+    RELOCATE_DEBUG  = 1;     //重定向到DEBUG用IP
+	RELOCATE_BEST   = 2;     //重定向到最优IP
+};
+message RelocateServerIPInfo
+{
+    required ERelocateType relocateType = 1; //重定向的类型
+    required uint32 serverIp    = 2;         //服务端的IP
+    required uint32 serverPort  = 3;         //服务端端口
+};
+message RegChannelReq
+{
+    optional string         channelKey = 1; 
+	optional string         extraInfo  = 2;  //非单通道时候，客户端填上这个信息来生成channelKey
+	optional string         deviceToken = 3; 
+};
+
+message RegChannelRsp{
+    required string               channelKey  = 1; 
+	optional RelocateServerIPInfo relocateIP = 2;     
+};
+

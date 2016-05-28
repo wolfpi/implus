@@ -1,0 +1,26 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//Heartbeat Request，应用在线后就需要发送心跳
+message HeartbeatInfo
+{
+    optional uint32     appId              = 1;
+    optional string     sessionId          = 2;
+    optional bool       background          = 3; //heartbeat interval
+};
+
+message HeartbeatReq
+{
+    optional string             channelKey  = 1;
+    optional bool               background  = 2;
+    repeated HeartbeatInfo      info        = 3;
+    optional bytes              extra       = 4; // extention
+};
+
+//Heartbeat Response
+message HeartbeatResp
+{
+    optional bytes     extra                = 1; // extention
+    optional uint64	   timestamp			= 2;
+};
+
+

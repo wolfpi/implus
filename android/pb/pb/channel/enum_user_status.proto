@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EUserStatus
+{
+    USER_NULL       = 1;//未绑定用户
+    USER_ONLINE     = 2;//用户在线
+    USER_OFFLINE    = 3;//用户离线
+};
+

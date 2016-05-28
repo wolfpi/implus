@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EAppStatus
+{
+    APP_NULL        = 1;//应用为空，此时的session为无效状态
+    APP_ONLINE      = 2;//应用在线
+    APP_OFFLINE     = 3;//应用离线
+};
+

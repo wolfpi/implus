@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.baidu.hi.sdk.activities.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textbox_first"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/layout_width"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center_vertical|end"
+                android:text="@string/tv_current_account"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_current_account"
+                android:layout_width="@dimen/layout_width2"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textbox_last"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/layout_width"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center_vertical|end"
+                android:text="@string/tv_current_id"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_current_id"
+                android:layout_width="@dimen/layout_width2"
+                android:layout_height="@dimen/layout_height"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_logout"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="@android:color/holo_blue_dark"
+            android:text="@string/btn_logout"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/holo_blue_dark" />
+
+    <RelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/divider_bottom"
+        android:background="@android:color/holo_blue_light"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_inbox"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="@string/btn_inbox"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_friend"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="@string/btn_friend"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_myself"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="@string/btn_myself"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider_top"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/menu"
+        android:background="@android:color/holo_blue_dark" />
+
+</RelativeLayout>

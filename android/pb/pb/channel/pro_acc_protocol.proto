@@ -1,0 +1,44 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum ESymcrytType 
+{
+    SYM_METHOD_NONE  = 0;
+    SYM_METHOD_AES   = 1;
+    SYM_METHOD_DES   = 2;
+};
+
+enum ECompressType
+{
+    COMPRESS_METHOD_NONE = 0;
+	COMPRESS_METHOD_ZIP  = 1;
+};
+
+message PubKeyInfo
+{
+	required  int32 nUindex = 1;		               //非对称密钥编号
+	required  bytes clientPubKey = 2;              //客户端的公钥(用对称密钥加密过)
+};
+
+message ChannelInfo
+{
+    optional  PubKeyInfo pubKey = 1;               //客户端的通道信息
+	repeated  int32 busiSupportEncryptType = 2;     //客户端支持的业务数据加密方式
+	repeated  int32 busiSupportCompressType = 3;    //客户端支持的业务数据压缩方式
+};
+
+message S1Data
+{
+    required  int32 ver = 1;                        //协议版本
+	required  int32 encIndex = 2;                   //此次通信加密算法编号
+	required  int32 nSindex = 3;				       //此次通信对称密钥编号
+    optional  bytes clientInfo = 4;                //客户端信息信息(加密过)
+
+};
+
+message S2Data
+{
+	required int32 symcryptType = 1;                //后续数据传输使用的对称加密的算法类型
+	required int32 compressType = 2;                //后续数据传输使用的压缩算法类型
+	optional bytes svrPubKey = 3;                  //服务端公钥信息
+	optional int32 shareKeyLen = 4;                //生成的共享密钥长度
+};

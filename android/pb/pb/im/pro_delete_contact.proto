@@ -1,0 +1,11 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_chat_type.proto";
+//option optimize_for = LITE_RUNTIME;
+message DeleteActiveContactReq{
+	required EChatType chatType = 1;//会话类型
+	repeated string chatID = 2;
+};
+
+message DeleteActiveContactRsp{
+};

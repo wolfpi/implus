@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.baidu.hi.sdk"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".IMSDKApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:theme="@style/AppTheme" >
+
+        <!-- start activity name from push -->
+        <meta-data
+            android:name="bootactivity"
+            android:value=".activities.InboxActivity" />
+        
+        <!--  service in seperate process 
+               true for in seperate APP 
+               false in host app -->
+        
+        <!--  
+         <meta-data
+            android:name="serviceinseparateprocess"
+            android:value="false" />
+           
+          <meta-data
+            android:name="usesdknotification"
+            android:value="true" />  --> 
+
+        <!-- DEMO PRODUCT ENVIRONMENT -->
+
+
+        <!--
+        <meta-data
+            android:name="BDIM_BOS_HOST"
+            android:value="bj.bcebos.com" />
+        <meta-data
+            android:name="BDIM_RUN_MODE"
+            android:value="PRODUCT" />
+        <meta-data 
+            android:name="DEMO_RUN_MODE"
+            android:value="PRODUCT"
+            />
+        -->
+
+
+        <!-- DEMO DEVELOP ENVIRONMENT -->
+
+
+        <!--  
+        <meta-data
+            android:name="BDIM_BOS_HOST"
+            android:value="10.105.97.15" />
+            -->
+        <!--<meta-data-->
+            <!--android:name="BDIM_RUN_MODE"-->
+            <!--android:value="DEVELOP" />-->
+        <!--<meta-data-->
+            <!--android:name="DEMO_RUN_MODE"-->
+            <!--android:value="DEVELOP" />-->
+
+
+
+        <!-- IMAGE PRODUCT ENVIRONMENT -->
+
+
+        <!--
+        <meta-data
+            android:name="BDIM_BOS_HOST"
+            android:value="bos.nj.bpc.baidu.com" />
+        <meta-data
+            android:name="BDIM_RUN_MODE"
+            android:value="PRODUCT" />
+        <meta-data
+            android:name="DEMO_RUN_MODE"
+            android:value="PRODUCT" />
+        -->
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.ContactActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.InboxActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.AddContactActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.ConversationActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.ImageDetailActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activities.HistoryActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- if it should not used in seperate process remove all property except name and intent filter -->
+        <!--android:process="com.baidu.im.sdk.OutAppServiceIPC"-->
+        <service
+            android:name="com.baidu.im.sdk.OutAppService"
+            android:enabled="true"
+            android:exported="true"
+            android:persistent="true"
+            android:priority="1000">
+            <intent-filter>
+                <action android:name="com.baidu.im.sdk.service" />
+            </intent-filter>
+        </service>
+
+        <!-- if you did not need offline message push remove the receiver -->
+        <receiver
+            android:name="com.baidu.im.frame.inapp.PushReceiver"
+            android:permission="com.baidu.im.sdk.push" >
+            <intent-filter>
+                <action android:name="com.baidu.im.sdk.push" />
+            </intent-filter>
+        </receiver>
+        
+        <!-- if it is not required to use in seperate process,  remove property process, and keep user_present and CONNECTIVITY_ACTION action-->
+        <!--android:process="com.baidu.im.sdk.OutAppServiceIPC"-->
+        <receiver
+            android:name="com.baidu.im.frame.outapp.ImBroadcastReceiver">
+            <intent-filter android:priority="0x7FFFFFFF" >
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+              
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!--  <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" /> 这两个是监听及可能多的事件，如果使用云推送，请去掉-->  
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="com.baidu.im.sdk.d.r" /> 
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

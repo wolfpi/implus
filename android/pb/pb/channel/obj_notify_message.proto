@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_notify_type.proto";
+message NotifyMessage
+{
+    required ENotifyType    notifyType      = 1;
+    required bytes          notifyData      = 2; //根据notifyId决定对应的pb格式
+};
+

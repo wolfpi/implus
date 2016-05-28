@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//order client to logout
+message LogoutNotify
+{
+    optional string cause   = 1; //logout cause
+}
+

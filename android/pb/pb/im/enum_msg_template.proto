@@ -1,0 +1,30 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME; 
+enum EMsgTemplate{
+    //简单的文本数据，只能包含一个Text对象
+    //textId填写为"MAIN_TEXT"
+    MSG_TEMPLATE_SIMPLE_TEXT = 1;
+    
+    //简单的图片消息，只能包含一个主Image和一个Text对象；同时还可以包含一个附加的缩略图
+    //主Text对象的textId填写为"MAIN_TEXT"
+    //主图片的imageId填写为"MAIN_IMAGE"
+    //缩略图片的imageId填写为"THUMBNAIL"
+    MSG_TEMPLATE_SIMPLE_IMAGE = 2;
+    
+    //简单的图片消息，只能包含一个Voice和一个主Text对象；
+    //主Text对象的textId填写为"MAIN_TEXT"
+    //主语音的voiceId填写为"MAIN_VOICE"
+    MSG_TEMPLATE_SIMPLE_VOICE = 3;
+    
+    //简单的文件消息，只能包含一个主File和一个主Text对象；
+    //主Text对象的textId填写为"MAIN_TEXT"
+    //主语音的fileId填写为"MAIN_FILE"
+    MSG_TEMPLATE_SIMPLE_FILE = 4;
+    
+    //简单的数据消息，只能包含一个主Data和一个主Text对象；
+    //主Text对象的textId填写为"MAIN_TEXT"
+    //主数据的dataId填写为"MAIN_DATA"
+    MSG_TEMPLATE_SIMPLE_DATA = 5;
+}
+

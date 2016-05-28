@@ -1,0 +1,23 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EPushMsgStatus{
+    STATUS_SUCCESS              = 1;//投递成功
+    STATUS_FAILED               = 2;//投递失败
+    STATUS_APP_NOT_EXIST        = 3;//APP不存在
+};
+
+message PushMsgStatus{
+    required uint64             ackId           = 1;
+    optional EPushMsgStatus     onlineStatus    = 2;
+    optional EPushMsgStatus     offlineStatus   = 3;
+};
+
+message PushMsgConfirmReq{
+    repeated PushMsgStatus msgStatus = 1;
+};
+
+message PushMsgConfirmRsp{
+   
+};
+
+

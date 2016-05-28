@@ -1,0 +1,13 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//对通道进行ping测速，adapter收到请求之后立刻返回
+message PingChannelReq
+{
+	optional uint64   timestamp  = 1;
+};
+
+message PingChannelRsp
+{
+    optional uint64   timestamp  = 1;
+};
+

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hipluginlogcenter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/HiSdk/libs/hipluginlogcenter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

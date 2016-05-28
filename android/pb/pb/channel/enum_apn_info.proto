@@ -1,0 +1,11 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EAPNInfo
+{
+    CHINA_MOBILE  = 1;  //中国移动
+	CHINA_UNICOM  = 2;  //中国联通
+	CHINA_TELECOM = 3;  //中国电信
+	OTHER         = 4;  //其他网络
+	NETWORK_UNKNOWN  = 5;  //未知类型，在WIFI或者有线网络情况下          
+};
+

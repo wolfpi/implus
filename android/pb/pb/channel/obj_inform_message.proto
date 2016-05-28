@@ -1,0 +1,17 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_inform_desc.proto";
+import "obj_kv.proto";
+//通知类消息的定义
+message InformMessage{
+    //通知标题，可以为空；如果为空则设为appid对应的应用名；
+    optional string         title           = 1;
+    //通知文本内容，不能为空；
+    required string         description     = 2;
+    
+    //通知的具体展现形式列表，可以根据客户端类型进行区分
+    //InformDesc中的device_types为0表示为缺省的，其他设备类型都是对根类型的继承
+    repeated InformDesc     imformDescs     = 3;
+    repeated KV             customContents  = 4;
+};
+

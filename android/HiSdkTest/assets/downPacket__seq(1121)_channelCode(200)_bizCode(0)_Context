@@ -1,0 +1,10 @@
+sessionId: ""
+seq: 1121
+channelCode: 200
+uid: 0
+appId: 1
+bizPackage {
+  packetType: RESPONSE
+  bizCode: 0
+  bizData: ""
+}

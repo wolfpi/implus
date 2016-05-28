@@ -1,0 +1,17 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_chat_conversation.proto";
+import "obj_one_msg.proto";
+//option optimize_for = LITE_RUNTIME;
+message QueryActiveContactsReq{
+    required uint64 lastQueryTime = 1;
+    optional uint32 needReturnMsgsContactsNum = 2;
+    optional uint32 needReturnMsgsNum = 3;
+}
+
+message QueryActiveContactsRsp{
+    required uint64 queryTime = 1;
+    repeated ChatConversation conversations = 2;
+    repeated OneMsg msgs = 3;
+}
+

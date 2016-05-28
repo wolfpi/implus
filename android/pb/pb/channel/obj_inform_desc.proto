@@ -1,0 +1,18 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_kv.proto";
+//通知形式的描述定义
+message InformDesc{//通知演示的构建方法，平台可以支持一些标准模式，应用可以扩展定义。缺省情况为0，表示使用标准方式
+    required uint32 builderId = 1; 
+    
+    //对于builder的参数表述。这里的参数信息需要和builder_id约定的一致
+    repeated KV         builderArgs = 2;
+    
+    //点击通知后的行为，平台支持标准的两种方式，1：打开url  2：打开应用
+    //应用可以扩展其他打开形式的定义
+    required uint32     openType    = 3; 
+    
+    //打开的参数信息，这里的参数信息需要和open_type约定的一致
+    repeated KV         openArgs    = 4;
+};
+

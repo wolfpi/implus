@@ -1,0 +1,14 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_platform_type.proto";
+message DeviceInfo
+{
+    required string         deviceToken     = 1;//唯一标识一台设备
+    required uint32         deviceTypeId        = 2;//唯一所属的类型id, 首次 用0代替,如果有deviceTypeId,填deviceTypeId
+    optional string         deviceName      = 3;//设备名
+    optional string         imei            = 4;//imei串
+    optional string         sdCard          = 5;//SD卡
+    required EPlatformType  platform        = 6;//设备类型
+    optional uint32         regTime         = 7;//注册时间
+};
+

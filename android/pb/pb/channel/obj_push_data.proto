@@ -1,0 +1,13 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_message_type.proto";
+import "obj_inform_message.proto";
+import "obj_normal_message.proto";
+import "obj_notify_message.proto";
+message PushData
+{
+    required EMessageType   messageType     = 1;
+    optional NormalMessage  normalMessage   = 2 ;
+    optional NotifyMessage  sysNotifyMessage  = 3 ;
+};
+

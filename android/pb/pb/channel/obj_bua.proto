@@ -1,0 +1,22 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_network_type.proto";
+import "enum_apn_info.proto";
+message BUAInfo
+{
+	optional string         deviceToken     = 1;//deviceToken信息，在senddata,heartbeat,pushconfirm消息中不填
+    optional ENetworkType   network         = 2;//网络类型
+	optional EAPNInfo       apn             = 3;//apn信息
+	optional string         osVer           = 4;//设备操作系统版本
+	optional string         sdkVer          = 5;//sdk版本
+};
+
+message BUA
+{
+	optional string         appVer          = 1;//app版本
+	optional uint32         mem             = 2;//内存信息
+	optional uint32         sdCard          = 3;//容量信息
+	optional BUAInfo        buaInfo         = 4;//一次连接中固定的bua信息，在从ACCESS接入时候，在regChannel完成之后，客户端可以不填这部分数据，贴吧通道接入，每次都要带上
+
+};
+

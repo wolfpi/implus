@@ -1,0 +1,12 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+message Voice{
+    optional string voiceId = 1;//语音留言的id，客户端设置
+    required string md5 = 2;//语音留言的md5，发起方计算得到
+    required uint32 size = 3;//大小，单位为byte
+    optional uint32 timeLen = 4;//语音留言的时间长度，单位为毫秒
+    optional string url = 5;//url，如果是平台管理的，格式为implus://{文件id_md5}。否则url由应用自己规定
+    optional string extInfo = 6;//附加信息
+}
+

@@ -1,0 +1,12 @@
+//IMPlusMsg:Send                发送消息
+//IMPlusMsg:QueryMsgs           查询消息
+//IMPlusMsg:ReadAck             已读上报
+//IMPlusMsg:QueryActiveContacts 查询会话
+
+//IMPlusFile:GetUploadSign      获取上传签名
+//IMPlusFile:UploadSuccess      上传成功
+//IMPlusFile:GetDownloadSign    获取下载签名
+
+//IMPlusChatSetting:Get			获取某个会话的设置
+//IMPlusChatSetting:Set			修改某个会话的设置
+//IMPlusChatSetting:Query		同步最新的会话设置

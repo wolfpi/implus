@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <View
+        android:id="@+id/divider_top"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/holo_blue_dark" />
+
+    <RelativeLayout
+        android:id="@+id/navibar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider_top"
+        android:background="@android:color/holo_blue_light" >
+
+        <Button
+            android:id="@+id/btn_back"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width1"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/holo_blue_dark"
+            android:text="@string/btn_back"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_oppsite"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/btn_inbox"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_history"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="@dimen/layout_width1"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/holo_blue_dark"
+            android:text="@string/btn_history"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/navibar"
+        android:background="@android:color/holo_blue_dark" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <LinearLayout
+            android:id="@+id/btn_more_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/stroke" >
+
+            <Button
+                android:id="@+id/btn_more"
+                android:layout_width="@dimen/layout_width1"
+                android:layout_height="@dimen/layout_height2"
+                android:paddingLeft="@dimen/layout_margin"
+                android:paddingRight="@dimen/layout_margin"
+                android:background="@drawable/ofm_collect_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_voice_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_more_container"
+            android:layout_centerVertical="true"
+            android:background="@drawable/stroke" >
+
+            <Button
+                android:id="@+id/btn_voice"
+                android:layout_width="@dimen/layout_width1"
+                android:layout_height="@dimen/layout_height2"
+                android:paddingLeft="@dimen/layout_margin"
+                android:paddingRight="@dimen/layout_margin"
+                android:background="@drawable/ofm_video_icon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_add_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/btn_voice_container"
+            android:layout_centerVertical="true"
+            android:background="@drawable/stroke" >
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="@dimen/layout_width1"
+                android:layout_height="@dimen/layout_height2"
+                android:paddingLeft="@dimen/layout_margin"
+                android:paddingRight="@dimen/layout_margin"
+                android:background="@drawable/ofm_photo_icon" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height2"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/stroke"
+            android:text="@string/btn_send" />
+
+        <EditText
+            android:id="@+id/et_sendmessage"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/layout_height2"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/btn_add_container"
+            android:layout_toStartOf="@id/btn_send"
+            android:background="@drawable/stroke"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/rl_bottom"
+        android:layout_below="@id/divider_bottom"
+        android:layout_marginBottom="@dimen/layout_padding"
+        android:layout_marginLeft="@dimen/layout_padding"
+        android:layout_marginRight="@dimen/layout_padding"
+        android:layout_marginTop="@dimen/layout_padding"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:scrollbars="none" />
+
+</RelativeLayout>

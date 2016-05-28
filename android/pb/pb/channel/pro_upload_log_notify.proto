@@ -1,0 +1,21 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//Notify client to upload logs
+message UploadLogNotify
+{
+    optional int32 startTime = 1;
+    optional int32 endTime = 2;
+	optional ELogLevel logLevel = 3;
+	optional string token = 4;
+    optional int32 syncTime = 5;
+};
+
+enum ELogLevel
+{
+    IM_LOG_LEVEL_TRACE   = 0;
+    IM_LOG_LEVEL_DEBUG   = 1;
+    IM_LOG_LEVEL_INFO    = 2;
+    IM_LOG_LEVEL_WARN    = 3;
+    IM_LOG_LEVEL_ERROR   = 4;
+    IM_LOG_LEVEL_FATAL   = 5;
+};

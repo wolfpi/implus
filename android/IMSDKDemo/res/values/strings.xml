@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello_world">Hello, world.</string>
+    <string name="app_name">IM Plus Demo</string>
+    <!--
+    <string name="action_plus">功能</string>
+    <string name="action_album">我的相册</string>
+    <string name="action_collection">我的收藏</string>
+    <string name="action_card">我的银行卡</string>
+    <string name="action_settings">设置</string>
+    <string name="action_feed">意见反馈</string>
+    <string name="plus_group_chat">发起群聊</string>
+    <string name="plus_add_friend">添加朋友</string>
+    <string name="plus_video_chat">视频聊天</string>
+    <string name="plus_scan">扫一扫</string>
+    <string name="plus_take_photo">拍照分享</string>
+    -->
+    <string name="tv_account">账号：</string>
+    <string name="tv_pwd">密码：</string>
+    <string name="tv_re_pwd">重复密码：</string>
+    <string name="tv_account_hint">请输入账号</string>
+    <string name="tv_pwd_hint">请输入密码</string>
+    <string name="btn_login">登录</string>
+    <string name="btn_logout">登出</string>
+    <string name="btn_register">注册</string>
+    <string name="btn_conversation">开始聊天</string>
+    <string name="btn_add">添加</string>
+    <string name="btn_back">后退</string>
+    <string name="btn_myself">我</string>
+    <string name="btn_friend">通讯录</string>
+    <string name="btn_inbox">会话</string>
+    <string name="btn_send">发送</string>
+    <string name="btn_history">历史</string>
+    <string name="btn_confirm">确认</string>
+    <string name="btn_deleteall">删除</string>
+    <string name="tv_welcome_login">欢迎使用</string>
+    <string name="tv_welcome_register">欢迎注册</string>
+    <string name="tv_welcome_add">添加联系人</string>
+    <string name="tv_status">当前状态:</string>
+    <string name="tv_feedback">点击生成测试账号按钮，自动生成登录账号！</string>
+    <string name="tv_current_account">当前账号：</string>
+    <string name="tv_current_id">当前ID：</string>
+    <string name="tv_target">输入对方的账号(需要获取对方uid，所以需要密码)</string>
+    <string name="tv_history">历史</string>
+    <string name="tv_oppsite_name">对方账号：</string>
+    <string name="tv_oppsite_id">对方ID：</string>
+    <string name="tv_group_name">群组名称：</string>
+    <string name="tv_group_desc">群组描述：</string>
+    <string name="tv_group_id">群组ID：</string>
+    <string name="et_oppsite_name_hint">请输入对方账号</string>
+    <string name="et_oppsite_id_hint">请输入对方ID</string>
+    <string name="et_group_name_hint">请输入群组名称</string>
+    <string name="et_group_desc_hint">请输入群组描述</string>
+    <string name="et_group_id_hint">请输入群组ID</string>
+    <string name="rb_add_user">添加好友</string>
+    <string name="rb_create_group">创建群组</string>
+    <string name="rb_add_member">添加成员</string>
+    <string name="rb_join_group">加入群组</string>
+
+</resources>

@@ -1,0 +1,16 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_platform_type.proto";
+message DeviceTypeInfo
+{
+    required EPlatformType  platform        = 1;//设备类型
+    optional string         model           = 2;//手机型号
+    optional string         os              = 3;//操作系统
+    optional string         network         = 4;//网络类型
+    optional string         sdDouble        = 5;//双卡双待
+    optional string         display         = 6;//分辨率
+    optional string         manu            = 7;//厂家
+    optional string         screenSize      = 8;//屏幕尺寸
+};
+
+

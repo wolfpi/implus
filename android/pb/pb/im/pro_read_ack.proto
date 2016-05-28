@@ -1,0 +1,12 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_chat_conversation.proto";
+//option optimize_for = LITE_RUNTIME;
+//上报已读
+message ReadAckReq{
+    repeated ChatConversation conversations = 1;
+}
+
+message ReadAckRsp{
+}
+

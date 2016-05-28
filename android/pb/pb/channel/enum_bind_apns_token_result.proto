@@ -1,0 +1,8 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+enum EBindApnsTokenResult
+{
+    BIND_SUCCESS             = 0;
+    BIND_FAILED              = 10500;
+};
+

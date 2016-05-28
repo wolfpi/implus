@@ -1,0 +1,10 @@
+seq: 0
+channelCode: 200
+uid: 72057594077928136
+appId: 1
+bizPackage {
+  packetType: NOTIFYCATION
+  bizCode: 0
+  bizData: "\nh\b\200\352\260\362\241\006\020\001\030\001\"T\b\002\032P\b\001\022Lmsg 1.3 N 1\r\nto:40000200\r\nmethod:msg_request\r\nfrom:40000200\r\n\r\n<msg>ut</msg>8\200\352\260\362\241\006"
+  chunkId: 0
+}

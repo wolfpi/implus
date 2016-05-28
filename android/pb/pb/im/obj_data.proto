@@ -1,0 +1,9 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+message Data{
+    required string dataId = 1;//用来标识数据
+    required bytes content = 2;//数据内容
+    optional string extInfo = 3;//附加信息
+}
+

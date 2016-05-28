@@ -1,0 +1,10 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+message URL{
+    required string urlId = 1;//用来标识URL
+    required string url = 2;
+    optional string title = 3;//用于显示的标题
+    optional string extInfo = 4;//附加信息
+}
+

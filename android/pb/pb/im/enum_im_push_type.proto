@@ -1,0 +1,11 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+enum EImPushType{
+    IM_PUSH_CHAT_MSG = 1;//普通消息
+    IM_PUSH_CHAT_MSG_RECV_ACK = 2;//消息接收确认
+    IM_PUSH_CHAT_MSG_READ_ACK = 3;//消息到达确认
+    IM_PUSH_CHAT_MSG_SYNC = 4;//同步消息
+    IM_PUSH_CHAT_SETTINGS_CHANGED = 5;//会话设置变更
+}
+

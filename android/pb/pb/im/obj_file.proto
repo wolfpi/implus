@@ -1,0 +1,12 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+message File{
+    optional string fileId = 1;//id，客户端设置
+    required string md5 = 2;//md5，发起方计算得到
+    required uint32 size = 3;//大小，单位为byte
+    optional string fileUrl = 4;//url，如果是平台管理的，格式为implus://{文件id_md5}。否则url由应用自己规定
+    required string name = 5;//文件名
+    optional string extInfo = 6;//附加信息
+}
+

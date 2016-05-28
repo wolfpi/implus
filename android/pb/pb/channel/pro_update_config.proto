@@ -1,0 +1,19 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "obj_config_group.proto";
+//check if exist newer config
+//client must update config when startuping or receiving CONFIG-CHANGED-NOTIFY
+message UpdateConfigReq
+{
+    repeated ConfigGroup  localConfig   = 1; // local config version
+};
+
+//only return newer config
+message UpdateConfigRsp
+{
+    repeated ConfigGroup  newConfig   = 1; // remote newest config
+    required uint64       timestamp   = 2; //配置文件最新修改日期
+};
+
+
+

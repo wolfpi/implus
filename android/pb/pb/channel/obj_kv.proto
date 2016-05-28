@@ -1,0 +1,7 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+message KV{
+    required string key  = 1;
+    required string data = 2;
+};
+

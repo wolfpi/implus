@@ -1,0 +1,10 @@
+sessionId: "5224A17D-6ADB-47B9-92F6-C425D5378FF3B1B850341EFBB29480EC62A2C20DE499"
+seq: 1109
+channelCode: 200
+uid: 72057594077928136
+appId: 1
+bizPackage {
+  packetType: RESPONSE
+  bizCode: 0
+  bizData: ""
+}

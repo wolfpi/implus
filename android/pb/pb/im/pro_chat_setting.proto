@@ -1,0 +1,46 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_chat_type.proto";
+//option optimize_for = LITE_RUNTIME; 
+enum EMessageReceiveMode{
+	RECEIVE_NOTIFICATION = 1;
+	RECEIVE_MESSAGE_ONLY = 2;
+	BLOCK_MESSAGE = 3;
+}
+
+message ChatSetting{
+	required EChatType chatType = 1;//会话类型
+	required string targetID = 2;
+	optional EMessageReceiveMode receiveMode = 3;
+	optional uint64 lastUpdate = 4;
+};
+
+message GetChatSettingsReq{
+	required EChatType chatType = 1;//会话类型
+	repeated string targetIDList = 2;
+}
+
+message GetChatSettingsRsp{
+	repeated ChatSetting settings = 1;
+}
+
+message SetChatSettingsReq{
+	repeated ChatSetting settings = 1;
+}
+
+message SetChatSettingsRsp{
+}
+
+message ChatSettingsChangedNotify{
+	repeated ChatSetting settings = 1;
+}
+
+message QueryChatSettingsReq{
+	required uint64 lastQueryTime = 1; 
+}
+
+message QueryChatSettingsRsp{
+	required uint64 lastQueryTime = 1; 
+	repeated ChatSetting settings = 2;
+}
+

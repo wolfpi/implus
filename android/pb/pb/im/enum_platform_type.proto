@@ -1,0 +1,15 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+//option optimize_for = LITE_RUNTIME;
+enum EPlatformType
+{
+    WINDOWS = 1;
+    MAC     = 2;
+    _NIX    = 4;
+    ANDROID = 8;
+    IOS     = 16;
+    WP      = 32;
+    WEB     = 64;
+    WINDOW_MOBILE = 128;
+};
+

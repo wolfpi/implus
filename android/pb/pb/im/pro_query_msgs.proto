@@ -1,0 +1,33 @@
+option java_package = "com.baidu.im.frame.pb";
+option optimize_for = LITE_RUNTIME;
+import "enum_chat_type.proto";
+import "obj_one_msg.proto";
+//option optimize_for = LITE_RUNTIME;
+//查询消息
+message QueryMsgsRange{
+    required EChatType  chatType = 1;
+    required string chatId = 2;
+    optional uint64 startSeq = 3;
+    optional uint64 endSeq = 4;
+    optional uint32 count = 5;
+}
+
+//查询消息的状态
+message QueryMsgsRangeStatus{
+    //原始请求的范围
+    required QueryMsgsRange  requestRange = 1;
+    //客户端是否需要针对这个范围检查更多的消息
+    required bool   needCheckMoreMsgs = 2;
+}
+
+message QueryMsgsReq{
+    repeated QueryMsgsRange msgRanges = 1;
+    optional uint32 count = 2;//总数量限制
+}
+
+message QueryMsgsRsp{
+    repeated OneMsg msgs = 1;
+    //请求范围对应的状态，对于没返回状态的情况，表示服务器没有处理，客户端需要重新请求
+    repeated QueryMsgsRangeStatus msgsRangeStatus = 2;
+}
+
